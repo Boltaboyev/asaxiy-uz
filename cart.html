@@ -47,9 +47,9 @@
                                 alt=""><span class="hidden max-[600px]:block">Yetkazmalar</span></a></li>
                     <li><a href="#!" class="relative flex justify-start items-center gap-[10px]"><img
                                 src="./assets/svg/4.svg" alt=""><span class="hidden max-[600px]:block">Savat</span><span
-                                class="h-[16px] top-[-2px] right-[-8px] max-[600px]:left-[-5px] w-[16px] text-[10px] bg-primary rounded-full flex justify-center items-center absolute text-[#fff]">0</span></a>
+                                class="counter h-[16px] top-[-2px] right-[-8px] max-[600px]:left-[-5px] w-[16px] text-[10px] bg-primary rounded-full flex justify-center items-center absolute text-[#fff]">0</span></a>
                     </li>
-                    <li><a href="#!" class="relative flex justify-start items-center gap-[10px]"><img
+                    <li><a href="./like.html" class="relative flex justify-start items-center gap-[10px]"><img
                                 src="./assets/svg/5.svg" alt=""><span
                                 class="hidden max-[600px]:block">Sevimlilar</span><span
                                 class="h-[16px] top-[-2px] right-[-8px] max-[600px]:left-[-5px] w-[16px] text-[10px] bg-primary rounded-full flex justify-center items-center absolute text-[#fff]">0</span></a>
@@ -78,37 +78,14 @@
         <div class="container2">
             <div class="flex justify-between items-start gap-[40px] w-full max-[800px]:flex-col">
 
-                <div class="flex flex-col justify-start items-start gap-[20px] flex-[3] max-[800px]:w-full">
+                <div class="productsList flex flex-col justify-start items-start gap-[20px] flex-[3] max-[800px]:w-full">
 
-                    <div class="p-[25px] bg-white flex flex-col gap-[10px] rounded-lg w-full">
-                        <div class="flex justify-between items-center gap-[20px] border-b border-comment border-opacity-25 max-[560px]:flex-col max-[560px]:pb-[10px] max-[560px]:justify-start max-[560px]:items-start">
-                            <div class="shop-img w-[100px] h-[100px] overflow-hidden max-[560px]:self-center max-[560px]:h-[140px] max-[560px]:w-[140px]">
-                                <img src="./assets/img/tel.jpg" alt="" class="w-full h-full object-contain">
-                            </div>
-
-                            <div class="shop-title flex flex-col justify-start items-start gap-[10px]">
-                                <h1>Samsung Galaxy A16 6/128GB Black smartfoni</h1>
-                            </div>
-                            
-                            <h1 class="text-primary font-[700] text-nowrap">2 000 000 so'm</h1>
-
-                        </div>
-
-                        <div class="shop-bottom flex justify-between items-center max-[290px]:flex-col max-[290px]:gap-[10px] max-[290px]:justify-start max-[290px]:items-start">
-                            <p class="text-[14px] opacity-55">Buyurtmalar miqdori : 2 ta</p>
-
-                            <button class="max-[290px]:w-full">
-                                <i
-                                    class='border border-red-500 max-[290px]:w-full text-red-500 p-[5px_10px] rounded bx bx-trash hover:text-[#fff] hover:bg-red-500 transition duration-[.2s] active:scale-[.96]'></i>
-                            </button>
-                        </div>
-                    </div>
 
                 </div>
 
                 <div class="p-[15px] rounded-lg flex flex-col gap-[10px] flex-[1] max-[800px]:w-full bg-white sticky top-[20px] max-[560px]:static">
                     <h1 class="font-[500]">Umumiy qiymat:</h1>
-                    <h1 class="font-[600] text-[17px]">12 100 000 so'm</h1>
+                    <h1 class="font-[600] text-[17px] totalPrice"></h1>
 
                     <div class="pt-[15px] border-t border-orange border-opacity-35">
                         <button class="btn w-full">BUYURTMA</button>
@@ -120,6 +97,7 @@
     </section>
 
 
+    <script type="module" src="./js/cart.js"></script>
 </body>
 
 </html>

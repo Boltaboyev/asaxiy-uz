@@ -224,6 +224,70 @@ header {
     width: 100%;
 }
 
+
+.shop-img {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+}
+.shop-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.shop-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.shop-price {
+    @apply text-primary;
+    font-weight: 700;
+    text-wrap: nowrap;
+}
+
+.shop-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #fe720033;
+    padding-top: 15px;
+}
+
+.shop-bottom p {
+    font-size: 14px;
+    opacity: .6;
+}
+
+.delete-btn i {
+    border: 1px solid #ec3939;
+    color: #ec3939;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: .2s;
+}
+
+.delete-btn i:hover {
+    color: #fff;
+    background: #ec3939;
+}
+
+.delete-btn i:active {
+    transform: scale(.96);
+}
+
+.shop-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    
+}
+
 @media (max-width: 580px) {
     .card-action button:first-child,
     .card-price p {
@@ -238,6 +302,23 @@ header {
         font-size: 14px;
     }
 
+}
+
+@media (max-width: 560px) {
+    .shop-img {
+        align-self: center;
+        height: 140px;
+        width: 140px;
+    }
+
+    .shop-card {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .shop-price{
+        width: 100%;
+        text-align: left;
+    }
 }
 
 
@@ -257,5 +338,22 @@ header {
 
     .month {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 290px) {
+    .shop-bottom {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .delete-btn {
+        width: 100%;
+    }
+
+    .delete-btn i {
+        width: 100%;
     }
 }

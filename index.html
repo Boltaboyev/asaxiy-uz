@@ -14,6 +14,10 @@
 
 <body class="bg-[#f4f7fd]">
 
+    <div class="loader-box  h-[100vh] w-full bg-white z-[999999] flex justify-center items-center fixed top-0 left-0">
+        <div class="loader"></div>
+    </div>
+
     <header>
         <div class="container2">
             <nav class="flex justify-between items-center py-[15px] gap-[40px]">
@@ -56,10 +60,14 @@
                                 class="hidden max-[600px]:block">Sevimlilar</span><span
                                 class="like-counter h-[16px] top-[-2px] right-[-8px] max-[600px]:left-[-5px] w-[16px] text-[10px] bg-primary rounded-full flex justify-center items-center absolute text-[#fff]">0</span></a>
                     </li>
-                    <li class="max-[600px]:hidden"><a href="#!"><img src="./assets/svg/uz.svg" alt=""></a></li>
-                    <li><a href="#!" class="flex justify-start items-center gap-[10px]"><img src="./assets/svg/user.svg"
-                                alt=""><span class="hidden max-[600px]:block">Profil</span></a></li>
-
+                    <li class="no-user"><a href="./login.html" class="flex justify-start items-center gap-[10px]"><img
+                                src="./assets/svg/user.svg" alt=""><span
+                                class="hidden max-[600px]:block">Profil</span></a></li>
+                    <li class="userInfo flex gap-[5px] justify-center items-center border p-[5px]">
+                        <span class="has-user"></span>
+                        <i class="bx bx-user text-primary text-[20px]"></i>
+                    </li>
+                    <li class="logout"><i class='bx bx-exit text-red-500 cursor-pointer text-[30px]'></i></li>
 
                     <div
                         class="justify-start items-center gap-[20px] absolute bottom-[20px] w-full hidden max-[600px]:flex">
@@ -75,6 +83,16 @@
             </nav>
         </div>
     </header>
+
+    <div id="logout-popup" class="logout-popup fixed left-0 top-0  flex justify-center items-center h-[100vh] bg-[#000000a2] backdrop-blur-[5px] w-full">
+        <div class="popup-content">
+            <p>Hisobdan chiqmoqchimisiz</p>
+            <div class="flex justify-center items-center gap-[20px] mt-4">
+                <button class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-green-500"  id="no-btn">Yo'q</button>
+                <button class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-red-500"  id="yes-btn">Ha</button>
+            </div>
+        </div>
+    </div>
 
     <!-- swiper -->
     <section class="py-[40px]">
@@ -118,6 +136,20 @@
         </div>
     </section>
 
+    <section class="py-[20px]">
+        <div class="container2">
+            <div class="filter-btns grid grid-cols-7 gap-[30px] max-[900px]:grid-cols-4 max-[900px]:gap-[10px_20px] max-[550px]:grid-cols-3 max-[370px]:grid-cols-2">
+                <button class="btn" id="all">All</button>
+                <button class="btn" id="book">Kitoblar</button>
+                <button class="btn" id="maishiy">Maishiy</button>
+                <button class="btn" id="telefon">Telefon</button>
+                <button class="btn" id="noutbuk">Noutbuk</button>
+                <button class="btn" id="watch">Soat</button>
+                <button class="btn" id="headphone">Quloqchin</button>
+            </div>
+        </div>
+    </section>
+
     <section class="py-[40px]">
         <div class="container2">
             <div
@@ -126,7 +158,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

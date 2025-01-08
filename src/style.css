@@ -10,6 +10,14 @@
     font-family: "Inter", serif;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #006bff;
+}
+
 button,
 input {
     outline: none;
@@ -91,11 +99,11 @@ header {
     color: #fff;
 }
 
-#nav + ul {
+#nav+ul {
     transition: 0.3s;
 }
 
-#nav:checked + ul {
+#nav:checked+ul {
     left: 0;
 }
 
@@ -212,24 +220,25 @@ header {
 }
 
 .gray-star {
-    @apply text-gray-300
+    @apply text-gray-300;
 }
 
 .cartProducts {
     padding: 25px;
-    background: #fff;display: flex;
+    background: #fff;
+    display: flex;
     flex-direction: column;
     gap: 10px;
     border-radius: 8px;
     width: 100%;
 }
 
-
 .shop-img {
     height: 100px;
     width: 100px;
     overflow: hidden;
 }
+
 .shop-img img {
     height: 100%;
     width: 100%;
@@ -260,7 +269,7 @@ header {
 
 .shop-bottom p {
     font-size: 14px;
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .delete-btn i {
@@ -268,7 +277,7 @@ header {
     color: #ec3939;
     padding: 5px 10px;
     border-radius: 4px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .delete-btn i:hover {
@@ -277,7 +286,7 @@ header {
 }
 
 .delete-btn i:active {
-    transform: scale(.96);
+    transform: scale(0.96);
 }
 
 .shop-card {
@@ -285,10 +294,73 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    
 }
 
+.bx-heart,
+.bxs-heart {
+    color: rgb(221, 44, 44);
+}
+
+/* loader */
+.loader {
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    @apply bg-primary;
+    opacity: .8;
+    box-shadow: 0 0 0 0 #006aff60;
+    animation: l2 1.5s infinite linear;
+    position: relative;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 100%;
+    box-shadow: 0 0 0 0 #006aff34;
+    animation: inherit;
+    animation-delay: -0.5s;
+}
+
+.loader:after {
+    animation-delay: -1s;
+}
+
+@keyframes l2 {
+    100% {
+        box-shadow: 0 0 0 40px #0000;
+    }
+}
+
+#form input,
+#reg-form input {
+    border: 1px solid #006aff57;
+    outline: none;
+}
+
+
+.logout-popup {
+    z-index: 1000000 !important;
+    display: none;
+}
+
+.logout-popup.show {
+    display: flex;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+
 @media (max-width: 580px) {
+
     .card-action button:first-child,
     .card-price p {
         display: none;
@@ -301,7 +373,6 @@ header {
     .card-title {
         font-size: 14px;
     }
-
 }
 
 @media (max-width: 560px) {
@@ -315,12 +386,12 @@ header {
         flex-direction: column;
         justify-content: flex-start;
     }
-    .shop-price{
+
+    .shop-price {
         width: 100%;
         text-align: left;
     }
 }
-
 
 @media (max-width: 466px) {
     .card-rate {

@@ -1483,10 +1483,6 @@ header {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .max-\[900px\]\:gap-\[10px_\]{
-    gap: 10px;
-  }
-
   .max-\[900px\]\:gap-\[10px_20px\]{
     gap: 10px 20px;
   }
@@ -1632,10 +1628,6 @@ header {
 }
 
 @media (max-width: 370px){
-  .max-\[370px\]\:grid{
-    display: grid;
-  }
-
   .max-\[370px\]\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

@@ -232,32 +232,20 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                             }),
                                         }
                                     )
-                                        .then((res) => res.json())
-                                        .then(() => {
-                                            toast.textContent =
-                                                "Product updated successfully"
-                                            toast.classList.remove(
-                                                "bottom-[-100%]"
-                                            )
-                                            toast.classList.add("bottom-[20px]")
-                                            toast.style.transition = "all .5s"
+                                    toast.textContent =
+                                        "Product updated successfully"
+                                    toast.classList.remove("bottom-[-100%]")
+                                    toast.classList.add("bottom-[20px]")
+                                    toast.style.transition = "all .5s"
 
-                                            editFormBox.classList.remove("flex")
-                                            editFormBox.classList.add("hidden")
+                                    editFormBox.classList.remove("flex")
+                                    editFormBox.classList.add("hidden")
 
-                                            setTimeout(() => {
-                                                toast.classList.remove(
-                                                    "bottom-[20px]"
-                                                )
-                                                toast.classList.add(
-                                                    "bottom-[-100%]"
-                                                )
-                                                location.reload()
-                                            }, 2000)
-                                        })
-                                        .catch((error) => {
-                                            console.log(error)
-                                        })
+                                    setTimeout(() => {
+                                        toast.classList.remove("bottom-[20px]")
+                                        toast.classList.add("bottom-[-100%]")
+                                        location.reload()
+                                    }, 2000)
                                 }
                             })
                     }

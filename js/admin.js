@@ -184,11 +184,11 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
             const editImg = document.getElementById("edit-img")
 
             editProductBox.forEach((box, index) => {
-                box.dataset.productId = data[index].id
+                box.productId = data[index].id
 
                 box.addEventListener("click", (e) => {
                     if (e.target.classList.contains("bxs-edit")) {
-                        const productId = box.dataset.productId
+                        const productId = box.productId
 
                         fetch(
                             `https://677a303e671ca03068334652.mockapi.io/products/${productId}`

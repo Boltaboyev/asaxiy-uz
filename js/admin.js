@@ -212,7 +212,7 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                     }
                                 })
 
-                                editForm.onsubmit = function (e) {
+                                editForm.addEventListener("submit", (e) => {
                                     e.preventDefault()
 
                                     fetch(
@@ -246,7 +246,7 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                         toast.classList.add("bottom-[-100%]")
                                         location.reload()
                                     }, 2000)
-                                }
+                                })
                             })
                     }
                 })
@@ -287,26 +287,20 @@ addForm.addEventListener("submit", (e) => {
             isNew: "new",
         }),
     })
-        .then((res) => res.json())
-        .then(() => {
-            toast.textContent = "Product added successfully"
-            toast.classList.remove("bottom-[-100%]")
-            toast.classList.add("bottom-[20px]")
-            toast.style.transition = "all .5s"
-            addTitle.value = ""
-            addCategory.value = ""
-            addPrice.value = ""
-            addMonth.value = ""
-            addImg.value = ""
-            setTimeout(() => {
-                toast.classList.remove("bottom-[20px]")
-                toast.classList.add("bottom-[-100%]")
-                location.reload()
-            }, 2000)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+    toast.textContent = "Product added successfully"
+    toast.classList.remove("bottom-[-100%]")
+    toast.classList.add("bottom-[20px]")
+    toast.style.transition = "all .5s"
+    addTitle.value = ""
+    addCategory.value = ""
+    addPrice.value = ""
+    addMonth.value = ""
+    addImg.value = ""
+    setTimeout(() => {
+        toast.classList.remove("bottom-[20px]")
+        toast.classList.add("bottom-[-100%]")
+        location.reload()
+    }, 2000)
 })
 
 // section active -----------------------------------------------------------------------

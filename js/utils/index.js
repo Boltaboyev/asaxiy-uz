@@ -16,6 +16,7 @@ function showDataUi(value, products) {
     let card = document.createElement("div")
     card.classList.add("card")
     card.innerHTML = `
+    <span class="${value?.isNew !== undefined ? 'newPr' : ""}">${value?.isNew !== undefined ? value?.isNew : ""}</span>
             <div class="card-img relative">
                 <div class="like absolute right-[10px] top-[10px]">
                     <i class='bx bx-heart text-red-500 z-10 text-[25px] cursor-pointer'></i>

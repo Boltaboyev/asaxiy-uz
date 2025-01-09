@@ -3,6 +3,11 @@ let cartProducts = document.querySelector(".productsList")
 let cart = JSON.parse(localStorage.getItem("carts")) || []
 let ttPrice = document.querySelector(".totalPrice")
 let cartCounter = document.querySelector(".counter")
+const noUser = document.querySelector(".no-user")
+const hasUser = document.querySelector(".has-user")
+const userInfo = document.querySelector(".userInfo")
+const logoutBtn = document.querySelector(".logout")
+
 
 function groupCartItems(cart) {
     let groupedCart = []
@@ -85,5 +90,45 @@ function deleteProduct(cartId) {
     localStorage.setItem("carts", JSON.stringify(cart))
     renderCart(cart)
 }
+
+const userId = localStorage.getItem("userId")
+
+if (userId) {
+    noUser.style.display = "none"
+    logoutBtn.style.display = "flex"
+    userInfo.style.display = "flex"
+
+    fetch(`https://677a303e671ca03068334652.mockapi.io/users/${userId}`)
+        .then((res) => res.json())
+        .then((user) => {
+            hasUser.textContent = `${user.name}`
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+} else {
+    noUser.style.display = "flex"
+    logoutBtn.style.display = "none"
+    userInfo.style.display = "none"
+}
+
+
+
+const logoutPopup = document.getElementById("logout-popup");
+const yesBtn = document.getElementById("yes-btn");
+const noBtn = document.getElementById("no-btn");
+
+logoutBtn.addEventListener("click", (e) => {
+    logoutPopup.classList.add("show"); 
+});
+
+yesBtn.addEventListener("click", () => {
+    localStorage.removeItem("userId");
+    window.location.href = "./index.html"
+});
+
+noBtn.addEventListener("click", () => {
+    logoutPopup.classList.remove("show"); 
+});
 
 renderCart(cart)

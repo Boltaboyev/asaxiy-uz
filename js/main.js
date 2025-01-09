@@ -82,7 +82,12 @@ if (userId) {
     fetch(`https://677a303e671ca03068334652.mockapi.io/users/${userId}`)
         .then((res) => res.json())
         .then((user) => {
-            hasUser.textContent = `${user.name}`
+            if (userId == "admin") {
+                hasUser.textContent = "Admin"
+                window.location.href = "./admin.html"
+            } else {
+                hasUser.textContent = `${user.name}`
+            }
         })
         .catch((err) => {
             console.log(err)
@@ -105,14 +110,16 @@ logoutBtn.addEventListener("click", (e) => {
 
 yesBtn.addEventListener("click", () => {
     localStorage.removeItem("userId");
-    location.reload();
+    window.location.href = "./index.html"
 });
 
 noBtn.addEventListener("click", () => {
     logoutPopup.classList.remove("show"); 
 });
 
-
+if (localStorage.getItem("userId") === "admin") {
+    console.log("ha");   
+}
 
 countCartLength(cartStore, cartCounter)
 countCartLength(likeStore, likeCounter)

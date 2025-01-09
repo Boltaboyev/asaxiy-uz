@@ -19,6 +19,19 @@ form.addEventListener("submit", (e) => {
     fetch("https://677a303e671ca03068334652.mockapi.io/users")
         .then((res) => res.json())
         .then((data) => {
+            // Adminni tekshiramiz
+            if (email === "admin@gmail.com" && password === "123") {
+                error.classList.add("hidden")
+                toast.style.transition = ".3s"
+                toast.style.right = "20px"
+                localStorage.setItem("userId", "admin") // Admin ID sifatida maxsus qiymat
+                setTimeout(() => {
+                    window.location.href = "./admin.html"
+                }, 2000)
+                return // Admin topilgan bo'lsa, keyingi tekshirishni o'tkazib yuboramiz
+            }
+
+            // Oddiy foydalanuvchini tekshiramiz
             const user = data.find(
                 (e) => e.email === email && e.password === password
             )
@@ -27,17 +40,22 @@ form.addEventListener("submit", (e) => {
                 error.classList.add("hidden")
                 toast.style.transition = ".3s"
                 toast.style.right = "20px"
-
-                localStorage.setItem("userId", user.id)
-
+                localStorage.setItem("userId", user.id) // User ID ni saqlash
                 setTimeout(() => {
                     window.location.href = "./index.html"
                 }, 2000)
             } else {
                 error.classList.remove("hidden")
+                toast.style.transition = ".3s"
+                toast.style.right = "-300px"
             }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+            console.error("Error:", err)
+            error.classList.remove("hidden")
+            toast.style.transition = ".3s"
+            toast.style.right = "-300px"
+        })
 })
 
 eyeIcon.addEventListener("click", () => {
@@ -51,3 +69,5 @@ eyeIcon.addEventListener("click", () => {
         eyeIcon.classList.add("fa-eye")
     }
 })
+
+

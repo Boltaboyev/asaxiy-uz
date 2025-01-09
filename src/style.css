@@ -99,11 +99,11 @@ header {
     color: #fff;
 }
 
-#nav+ul {
+#nav + ul {
     transition: 0.3s;
 }
 
-#nav:checked+ul {
+#nav:checked + ul {
     left: 0;
 }
 
@@ -112,6 +112,8 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
+    overflow: hidden;
     justify-content: space-between;
     background: #fff;
     padding: 18px;
@@ -307,7 +309,7 @@ header {
     aspect-ratio: 1;
     border-radius: 50%;
     @apply bg-primary;
-    opacity: .8;
+    opacity: 0.8;
     box-shadow: 0 0 0 0 #006aff60;
     animation: l2 1.5s infinite linear;
     position: relative;
@@ -340,14 +342,19 @@ header {
     outline: none;
 }
 
-
 .logout-popup {
     z-index: 1000000 !important;
     display: none;
 }
 
 .logout-popup.show {
+    position: fixed;
     display: flex;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000000;
 }
 
 .popup-content {
@@ -357,10 +364,29 @@ header {
     text-align: center;
 }
 
+.section {
+    display: none;
+}
 
+.section.active {
+    display: block;
+}
+
+.newPr {
+    position: absolute;
+    left: -40%;
+    top: 4%;
+    @apply bg-green-400;
+    padding: 2px;
+    width: 100%; 
+    text-align: center;
+    transform: rotate(-45deg);
+    color: #fff;
+    font-size: 12px;
+    z-index: 100;
+}
 
 @media (max-width: 580px) {
-
     .card-action button:first-child,
     .card-price p {
         display: none;

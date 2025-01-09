@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAXIY</title>
+    <link rel="shortcut icon" href="./assets/img/fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="./src/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body class="bg-[#f4f7fd]">
+
+
+    <header class="py-[10px]">
+        <div class="container2">
+            <nav class="flex justify-between items-cpy-[15px] gap-[40px]">
+
+                <a href="./index.html">
+                    <img src="./assets/img/logo.png" alt="" class="max-[600px]:w-[100px]">
+                </a>
+
+
+                <div>
+                    <ul class="flex justify-citems-cgap-[20px]">
+                        <li class="userInfo flex gap-[5px] justify-citems-cborder p-[5px]">
+                            <span class="has-user"></span>
+                            <i class="bx bx-user text-primary text-[20px]"></i>
+                        </li>
+                        <li class="logout"><i class='bx bx-exit text-red-500 cursor-pointer text-[30px]'></i></li>
+                    </ul>
+                </div>
+
+        </div>
+    </header>
+
+    <div id="logout-popup"
+        class="logout-popup fixed left-0 top-0 z-[99999]  flex justify-center items-ch-[100vh] bg-[#000000a2] backdrop-blur-[5px] w-full">
+        <div class="popup-content">
+            <p>Hisobdan chiqmoqchimisiz</p>
+            <div class="flex justify-center gap-[20px] mt-4">
+                <button
+                    class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-green-500"
+                    id="no-btn">Yo'q</button>
+                <button
+                    class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-red-500"
+                    id="yes-btn">Ha</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- main ----------------------------------------------------->
+
+    <section class="py-[20px]">
+        <div class="container2">
+            <div
+                class="grid grid-cols-4 max-[1070px]:grid-cols-3 max-[800px]:grid-cols-2 max-[510px]:grid-cols-1 gap-[40px] max-[1070px]:gap-[20px_40px] max-[800px]:gap-[15px]">
+                <button class="btn" id="all-btn">All products</button>
+                <button class="btn" id="add-btn">Add <i class='bx bx-folder-plus'></i></button>
+                <button class="btn" id="edit-btn">Edit <i class='bx bx-edit'></i></button>
+                <button class="btn" id="remove-btn">Remove <i class='bx bx-folder-minus'></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- all product ----------------------------->
+    <section class="section py-[20px]" id="all-product">
+        <div class="container2">
+            <div id="append-all-product"
+                class="grid grid-cols-4 max-[1070px]:grid-cols-3 max-[800px]:grid-cols-2 max-[510px]:grid-cols-1 gap-[30px]">
+            </div>
+        </div>
+    </section>
+
+    <!-- add product ----------------------------->
+    <section class="section py-[20px]" id="add-section">
+        <div class="container2">
+            <form id="add-form" class="m-auto flex flex-col gap-[20px] w-[60%] p-[20px] rounded-xl bg-white">
+                <h1 class="text-primary font-[500] text-[20px] text-center">New Product</h1>
+                <input required id="add-title"
+                    class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
+                    placeholder="Title">
+                <input required id="add-price"
+                    class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
+                    placeholder="Price">
+                <input required id="add-monthlyPay"
+                    class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
+                    placeholder="Monthly payment">
+                <input required id="add-img" class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600"
+                    type="url" placeholder="Img URL">
+                <input required id="add-category"
+                    class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
+                    placeholder="Category">
+                <button class="btn">Add new product</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- edit product ----------------------------->
+    <section class="section py-[20px]" id="edit-section">
+        <div class="container2 gap-[30px]">
+
+            <div id="append-edit-pr"
+                class="gap-[20px] w-full grid grid-cols-4 max-[1070px]:grid-cols-3 max-[800px]:grid-cols-2 max-[510px]:grid-cols-1">
+
+            </div>
+
+            <div
+                class="editFormBox hidden h-[100vh] w-full bg-[#0000007c] backdrop-blur-[4px] justify-center items-center fixed left-0 top-0 z-[10000000]">
+
+                <form id="edit-form"
+                    class="relative m-auto flex flex-col gap-[20px] w-[50%] p-[20px] rounded-xl bg-white">
+                    <i
+                        class="bx bx-x absolute right-[-10px] top-[-10px] flex justify-center items-center bg-red-400 p-[10px] rounded-full text-[20px] text-white cursor-pointer hover:bg-red-500"></i>
+                    <h1 class="text-primary font-[500] text-[20px] text-center">Edit Product</h1>
+                    <input id="edit-title" required
+                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
+                        placeholder="Title">
+                    <input id="edit-price" required
+                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
+                        placeholder="Price">
+                    <input id="edit-monthlyPay" required
+                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
+                        placeholder="Monthly payment">
+                    <input required id="edit-img"
+                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="url"
+                        placeholder="Img URL">
+                    <input id="edit-category" required
+                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
+                        placeholder="Category">
+                    <button class="btn">Edit product</button>
+                </form>
+            </div>
+
+    </section>
+
+    <!-- remove product ----------------------------->
+    <section class="section py-[20px]" id="remove-section">
+        <div class="container2">
+            <div id="append-remove-pr"
+                class="gap-[20px] w-full grid grid-cols-4 max-[1070px]:grid-cols-3 max-[800px]:grid-cols-2 max-[510px]:grid-cols-1">
+
+            </div>
+        </div>
+    </section>
+
+    <p id="toast"
+        class="bg-green-400 p-5 rounded-md text-center shadow-lg fixed bottom-[-100%] right-[20px] transition duration-[.3s] z-[999] text-white font-semibold">
+    </p>
+
+    <script type="module" src="./js/admin.js"></script>
+</body>
+
+</html>

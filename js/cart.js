@@ -7,7 +7,9 @@ const noUser = document.querySelector(".no-user")
 const hasUser = document.querySelector(".has-user")
 const userInfo = document.querySelector(".userInfo")
 const logoutBtn = document.querySelector(".logout")
-
+const cartSection = document.getElementById("cart-section")
+const emptySection = document.getElementById("empty-section")
+const userId = localStorage.getItem("userId")
 
 function groupCartItems(cart) {
     let groupedCart = []
@@ -24,6 +26,18 @@ function groupCartItems(cart) {
 
 function renderCart(cart) {
     cartProducts.innerHTML = ""
+    if (!userId) {
+        cart.length = 0
+        cartCounter = 0
+        localStorage.setItem("carts", JSON.stringify(cart)) 
+    }
+    if (cart.length === 0) {
+        cartSection.style.display = "none"
+        emptySection.style.display = "block"
+    } else {
+        cartSection.style.display = "block"
+        emptySection.style.display = "none"
+    }
     let groupedCart = groupCartItems(cart)
     groupedCart.forEach((value) => {
         let cartPr = document.createElement("div")
@@ -31,9 +45,7 @@ function renderCart(cart) {
         cartPr.innerHTML = `
             <div class="shop-card">
                 <div class="shop-img">
-                    <img src="${
-                        value?.img
-                    }" alt="">
+                    <img src="${value?.img}" alt="">
                 </div>
 
                 <div class="shop-title">
@@ -46,13 +58,9 @@ function renderCart(cart) {
             </div>
 
             <div class="shop-bottom">
-                <p>Buyurtmalar miqdori : ${
-                    value?.count
-                } ta</p>
+                <p>Buyurtmalar miqdori : ${value?.count} ta</p>
 
-                <button class="delete-btn" data-id="${
-                    value.id
-                }">
+                <button class="delete-btn" data-id="${value.id}">
                     <i class='bx bx-trash'></i>
                 </button>
             </div>
@@ -91,8 +99,6 @@ function deleteProduct(cartId) {
     renderCart(cart)
 }
 
-const userId = localStorage.getItem("userId")
-
 if (userId) {
     noUser.style.display = "none"
     logoutBtn.style.display = "flex"
@@ -112,23 +118,21 @@ if (userId) {
     userInfo.style.display = "none"
 }
 
-
-
-const logoutPopup = document.getElementById("logout-popup");
-const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
+const logoutPopup = document.getElementById("logout-popup")
+const yesBtn = document.getElementById("yes-btn")
+const noBtn = document.getElementById("no-btn")
 
 logoutBtn.addEventListener("click", (e) => {
-    logoutPopup.classList.add("show"); 
-});
+    logoutPopup.classList.add("show")
+})
 
 yesBtn.addEventListener("click", () => {
-    localStorage.removeItem("userId");
+    localStorage.removeItem("userId")
     window.location.href = "./index.html"
-});
+})
 
 noBtn.addEventListener("click", () => {
-    logoutPopup.classList.remove("show"); 
-});
+    logoutPopup.classList.remove("show")
+})
 
 renderCart(cart)

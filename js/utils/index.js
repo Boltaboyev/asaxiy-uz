@@ -48,9 +48,9 @@ function showDataUi(value, products) {
                 } so'm</h1>
             </div>
 
-            <p class="month">${
-                value?.month.toLocaleString("uz-UZ").replace(/,/, " ") || 0
-            } so'm x 12 oy</p>
+                    <p class="text-[14px] text-green-500 font-[500]">
+                    ${(Number(value?.month.toFixed(0))).toLocaleString().replace(/,/g , " ")} so'm / 12 oy
+                    </p>
 
             <div class="card-action">
                 <button class="btn">Hoziroq xarid qilish</button>

@@ -4,6 +4,8 @@ const noUser = document.querySelector(".no-user")
 const hasUser = document.querySelector(".has-user")
 const userInfo = document.querySelector(".userInfo")
 const logoutBtn = document.querySelector(".logout")
+const likeSection = document.getElementById("like-section")
+const emptyLike = document.getElementById("like-empty")
 
 function groupCartItems(cart) {
     let groupedCart = []
@@ -20,6 +22,14 @@ function groupCartItems(cart) {
 
 function renderCart(cart) {
     products.innerHTML = ""
+    if (cart.length === 0) {
+        emptyLike.style.display = "block"
+        likeSection.style.display = "none"
+        return
+    } else {
+        emptyLike.style.display = "none"
+        likeSection.style.display = "block"
+    }
     let groupedCart = groupCartItems(cart)
     groupedCart.forEach((value) => {
         let card = document.createElement("div")
@@ -62,9 +72,9 @@ function renderCart(cart) {
                     } so'm</h1>
                 </div>
 
-                <p class="month">${
-                    value?.month.toLocaleString("uz-UZ").replace(/,/g, " ") || 0
-                } so'm x 12 oy</p>
+                    <p class="text-[14px] text-green-500 font-[500]">
+                    ${(Number(value?.month.toFixed(0))).toLocaleString().replace(/,/g , " ")} so'm / 12 oy
+                    </p>
 
                 <div class="card-action">
                     <button class="btn">Hoziroq xarid qilish</button>

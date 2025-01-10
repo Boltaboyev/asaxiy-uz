@@ -79,21 +79,22 @@
         </div>
     </header>
 
-        <div id="logout-popup"
-            class="logout-popup fixed left-0 top-0  flex justify-center items-center h-[100vh] bg-[#000000a2] backdrop-blur-[5px] w-full">
-            <div class="popup-content">
-                <p>Hisobdan chiqmoqchimisiz</p>
-                <div class="flex justify-center items-center gap-[20px] mt-4">
-                    <button
-                        class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-green-500"
-                        id="no-btn">Yo'q</button>
-                    <button class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-red-500"
-                        id="yes-btn">Ha</button>
-                </div>
+    <div id="logout-popup"
+        class="logout-popup fixed left-0 top-0  flex justify-center items-center h-[100vh] bg-[#000000a2] backdrop-blur-[5px] w-full">
+        <div class="popup-content">
+            <p>Hisobdan chiqmoqchimisiz</p>
+            <div class="flex justify-center items-center gap-[20px] mt-4">
+                <button
+                    class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-green-500"
+                    id="no-btn">Yo'q</button>
+                <button
+                    class="text-white p-[5px] w-full rounded-md cursor-pointer opacity-80 hover:opacity-100 bg-red-500"
+                    id="yes-btn">Ha</button>
             </div>
         </div>
+    </div>
 
-    <section class="py-[20px]">
+    <section id="cart-section" class="py-[20px]">
         <div class="container2">
             <div class="flex justify-between items-start gap-[40px] w-full max-[800px]:flex-col">
 
@@ -116,6 +117,18 @@
             </div>
         </div>
     </section>
+
+
+    <section id="empty-section" class="py-[20px]">
+        <div class="container2 flex flex-col justify-center items-center text-center">
+            <img src="./assets/img/cart.webp" alt="" class="w-[200px] max-[460px]:w-[150px]">
+
+            <h1 class="mt-4 text-[30px] font-[700] max-[330px]:text-[16px] text-tx max-[670px]:text-[20px]">Savatda hozircha mahsulot yo'q</h1>
+            <p class="text-tx max-[330px]:hidden font-[500] max-[670px]:text-[14px]">Bosh sahifadagi termalardan boshlang yoki kerakli mahsulotni qidiruv orqali toping</p>
+            <a href="./index.html" class="btn mt-3 p-[10px_15px]">Asosiy menyu</a>
+        </div>
+    </section>
+
 
 
     <script type="module" src="./js/cart.js"></script>

@@ -35,7 +35,7 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
     .then((res) => res.json())
     .then((data) => {
         data.forEach((product) => {
-            // all product
+            // all product section
             let allProductDiv = document.createElement("div")
             allProductDiv.innerHTML += `
                 <div
@@ -55,17 +55,18 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
 
                     <div class="flex flex-col w-full gap-[2px]">
                         <h1 class="text-[20px] font-[600] text-primary">${product?.price
-                            .toLocaleString()
+                            .toLocaleString('uz-UZ')
                             .replace(/,/g, " ")} so'm</h1>
-                        <p class="text-[14px] text-green-500 font-[500]">${product?.month
-                            .toLocaleString()
-                            .replace(/,/g, " ")} so'm / 12 oy</p>
+                    <p class="text-[14px] text-green-500 font-[500]">
+                    ${(Number(product.month.toFixed(0))).toLocaleString('uz-UZ').replace(/,/g , " ")} so'm / 12 oy
+                    </p>
+
                     </div>
                 </div>
                 `
             appendAllProduct.append(allProductDiv)
 
-            // edit product
+            // edit product section
             let editProductDiv = document.createElement("div")
             editProductDiv.classList.add("edit-product-box")
             editProductDiv.innerHTML += `
@@ -87,11 +88,11 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
 
                     <div class="flex flex-col w-full gap-[2px]">
                         <h1 class="text-[20px] font-[600] text-primary">${product?.price
-                            .toLocaleString()
+                            .toLocaleString('uz-UZ')
                             .replace(/,/, " ")} so'm</h1>
-                        <p class="text-[14px] text-orange font-[500]">${product?.month
-                            .toLocaleString()
-                            .replace(/,/, " ")} so'm / 12 oy</p>
+                    <p class="text-[14px] text-green-500 font-[500]">
+                    ${(Number(product.month.toFixed(0))).toLocaleString('uz-UZ').replace(/,/g , " ")} so'm / 12 oy
+                    </p>
                     </div>
 
                     <i
@@ -100,7 +101,7 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                 `
             appendEditProduct.append(editProductDiv)
 
-            // remove product
+            // remove product section
             let removeProductDiv = document.createElement("div")
             removeProductDiv.classList.add("remove-product-box")
             removeProductDiv.innerHTML += `
@@ -122,11 +123,11 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
 
                     <div class="flex flex-col w-full gap-[2px]">
                         <h1 class="text-[20px] font-[600] text-primary">${product?.price
-                            .toLocaleString()
+                            .toLocaleString('uz-UZ')
                             .replace(/,/, " ")} so'm</h1>
-                        <p class="text-[14px] text-orange font-[500]">${product?.month
-                            .toLocaleString()
-                            .replace(/,/, " ")} so'm / 12 oy</p>
+                    <p class="text-[14px] text-green-500 font-[500]">
+                    ${(Number(product.month.toFixed(0))).toLocaleString('uz-UZ').replace(/,/g , " ")} so'm / 12 oy
+                    </p>
                     </div>
 
                     <i
@@ -148,25 +149,19 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                 method: "DELETE",
                             }
                         )
-                            .then(() => {
-                                toast.textContent =
-                                    "Product removed successfully"
-                                toast.classList.remove("bg-green-400")
-                                toast.classList.add("bg-red-400")
-                                toast.classList.remove("bottom-[-100%]")
-                                toast.classList.add("bottom-[20px]")
-                                toast.style.transition = "all .5s"
-                                setTimeout(() => {
-                                    toast.classList.remove("bottom-[20px]")
-                                    toast.classList.add("bottom-[-100%]")
-                                    toast.classList.remove("bg-red-400")
-                                    toast.classList.add("bg-green-400")
-                                    location.reload()
-                                }, 2000)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
+                        toast.textContent = "Product removed successfully"
+                        toast.classList.remove("bg-green-400")
+                        toast.classList.add("bg-red-400")
+                        toast.classList.remove("bottom-[-100%]")
+                        toast.classList.add("bottom-[20px]")
+                        toast.style.transition = "all .5s"
+                        setTimeout(() => {
+                            toast.classList.remove("bottom-[20px]")
+                            toast.classList.add("bottom-[-100%]")
+                            toast.classList.remove("bg-red-400")
+                            toast.classList.add("bg-green-400")
+                            location.reload()
+                        }, 2000)
                     }
                 })
             })
@@ -200,8 +195,8 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                 editTitle.value = product.title
                                 editCategory.value = product.category
                                 editPrice.value = product.price
-                                editMonth.value = product.month
-                                editImg.value = product.img
+                                editMonth.value = product.month.toFixed(0)
+                                editImg.dataset.oldImage = product.img
 
                                 closeForm.addEventListener("click", () => {
                                     if (
@@ -215,42 +210,69 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
                                 editForm.addEventListener("submit", (e) => {
                                     e.preventDefault()
 
-                                    fetch(
-                                        `https://677a303e671ca03068334652.mockapi.io/products/${productId}`,
-                                        {
-                                            method: "PUT",
-                                            headers: {
-                                                "Content-Type":
-                                                    "application/json",
-                                            },
-                                            body: JSON.stringify({
-                                                title: editTitle.value,
-                                                category: editCategory.value,
-                                                price: +editPrice.value,
-                                                month: +editMonth.value,
-                                                img: editImg.value,
-                                            }),
+                                    const file = editImg.files[0]
+                                    if (file) {
+                                        const editReader = new FileReader()
+                                        editReader.onload = () => {
+                                            const editedBaseImg = editReader.result
+                                            updateProduct(
+                                                productId,
+                                                editedBaseImg
+                                            )
                                         }
-                                    )
-                                    toast.textContent =
-                                        "Product updated successfully"
-                                    toast.classList.remove("bottom-[-100%]")
-                                    toast.classList.add("bottom-[20px]")
-                                    toast.style.transition = "all .5s"
-
-                                    editFormBox.classList.remove("flex")
-                                    editFormBox.classList.add("hidden")
-
-                                    setTimeout(() => {
-                                        toast.classList.remove("bottom-[20px]")
-                                        toast.classList.add("bottom-[-100%]")
-                                        location.reload()
-                                    }, 2000)
+                                        editReader.readAsDataURL(file)
+                                    } else {
+                                        updateProduct(
+                                            productId,
+                                            editImg.dataset.oldImage
+                                        )
+                                    }
                                 })
                             })
                     }
                 })
             })
+
+            function updateProduct(productId, editedBaseImg) {
+                fetch(
+                    `https://677a303e671ca03068334652.mockapi.io/products/${productId}`,
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            title: editTitle.value,
+                            category: editCategory.value,
+                            price: +editPrice.value,
+                            month: +editMonth.value,
+                            img: editedBaseImg,
+                        }),
+                    }
+                )
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Failed to update product")
+                        }
+                        return response.json()
+                    })
+                    .then(() => {
+                        toast.textContent = "Product updated successfully"
+                        toast.classList.remove("bottom-[-100%]")
+                        toast.classList.add("bottom-[20px]")
+                        toast.style.transition = "all .5s"
+
+                        editFormBox.classList.remove("flex")
+                        editFormBox.classList.add("hidden")
+
+                        setTimeout(() => {
+                            toast.classList.remove("bottom-[20px]")
+                            toast.classList.add("bottom-[-100%]")
+                            location.reload()
+                        }, 2000)
+                    })
+                    .catch((err) => console.log(err))
+            }
         })
     })
 
@@ -261,46 +283,63 @@ fetch("https://677a303e671ca03068334652.mockapi.io/products")
 // add product -----------------------------------------------------------------------
 const addForm = document.getElementById("add-form")
 const addTitle = document.getElementById("add-title")
-const addCategory = document.getElementById("add-category")
 const addPrice = document.getElementById("add-price")
-const addMonth = document.getElementById("add-monthlyPay")
+// const addMonth = document.getElementById("add-monthlyPay")
 const addImg = document.getElementById("add-img")
 const addSubmit = document.getElementById("add-submit")
 
 addForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    fetch("https://677a303e671ca03068334652.mockapi.io/products", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            title: addTitle.value,
-            category: addCategory.value,
-            price: +addPrice.value,
-            month: +addMonth.value,
-            img: addImg.value,
-            comment: 0,
-            rate: 0,
-            count: 1,
-            isNew: "new",
-        }),
-    })
-    toast.textContent = "Product added successfully"
-    toast.classList.remove("bottom-[-100%]")
-    toast.classList.add("bottom-[20px]")
-    toast.style.transition = "all .5s"
-    addTitle.value = ""
-    addCategory.value = ""
-    addPrice.value = ""
-    addMonth.value = ""
-    addImg.value = ""
-    setTimeout(() => {
-        toast.classList.remove("bottom-[20px]")
-        toast.classList.add("bottom-[-100%]")
-        location.reload()
-    }, 2000)
+    const file = addImg.files[0]
+    if (!file) {
+        alert("Please select an image file.")
+        return
+    }
+
+    const reader = new FileReader()
+    reader.onload = () => {
+        const baseImg = reader.result
+
+        fetch("https://677a303e671ca03068334652.mockapi.io/products", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title: addTitle.value,
+                category: "new",
+                price: +addPrice.value,
+                month: +addPrice.value / 12,
+                img: baseImg,
+                comment: 0,
+                rate: 0,
+                count: 1,
+                isNew: "new",
+            }),
+        })
+            .then((res) => res.json())
+            .then(() => {
+                toast.textContent = "Product added successfully"
+                toast.classList.remove("bottom-[-100%]")
+                toast.classList.add("bottom-[20px]")
+                toast.style.transition = "all .5s"
+                addTitle.value = ""
+                addPrice.value = ""
+                // addMonth.value = ""
+                addImg.value = ""
+                setTimeout(() => {
+                    toast.classList.remove("bottom-[20px]")
+                    location.reload()
+                    toast.classList.add("bottom-[-100%]")
+                }, 2000)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    reader.readAsDataURL(file)
 })
 
 // section active -----------------------------------------------------------------------

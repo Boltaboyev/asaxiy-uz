@@ -58,10 +58,18 @@
         <div class="container2">
             <div
                 class="grid grid-cols-4 max-[1070px]:grid-cols-3 max-[800px]:grid-cols-2 max-[510px]:grid-cols-1 gap-[40px] max-[1070px]:gap-[20px_40px] max-[800px]:gap-[15px]">
-                <button class="btn" id="all-btn">All products</button>
-                <button class="btn" id="add-btn">Add <i class='bx bx-folder-plus'></i></button>
-                <button class="btn" id="edit-btn">Edit <i class='bx bx-edit'></i></button>
-                <button class="btn" id="remove-btn">Remove <i class='bx bx-folder-minus'></i></button>
+                <button
+                    class="p-[8px] rounded-md transition-colors duration-[.2s] active:scale-[.98] text-white bg-gray-500 hover:bg-gray-600"
+                    id="all-btn">All products</button>
+                <button
+                    class="p-[8px] rounded-md transition-colors duration-[.2s] active:scale-[.98] text-white bg-green-400 hover:bg-green-500"
+                    id="add-btn">Add <i class='bx bx-folder-plus'></i></button>
+                <button
+                    class="p-[8px] rounded-md transition-colors duration-[.2s] active:scale-[.98] text-white bg-blue-400 hover:bg-blue-500"
+                    id="edit-btn">Edit <i class='bx bx-edit'></i></button>
+                <button
+                    class="p-[8px] rounded-md transition-colors duration-[.2s] active:scale-[.98] text-white bg-red-400 hover:bg-red-500"
+                    id="remove-btn">Remove <i class='bx bx-folder-minus'></i></button>
             </div>
         </div>
     </section>
@@ -86,14 +94,15 @@
                 <input required id="add-price"
                     class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
                     placeholder="Price">
-                <input required id="add-monthlyPay"
+                <!-- <input required id="add-monthlyPay"
                     class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
-                    placeholder="Monthly payment">
-                <input required id="add-img" class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600"
-                    type="url" placeholder="Img URL">
-                <input required id="add-category"
-                    class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
-                    placeholder="Category">
+                    placeholder="Monthly payment"> -->
+                <label for="add-img" 
+                    class="flex justify-between items-center cursor-pointer h-[40px] bg-blue-100 p-[10px] rounded-md text-gray-600">
+                    <p>Choose Image</p>
+                    <i class="bx bx-image"></i>
+                </label>
+                <input required id="add-img" class="hidden" type="file" placeholder="Img URL">
                 <button class="btn">Add new product</button>
             </form>
         </div>
@@ -125,9 +134,11 @@
                     <input id="edit-monthlyPay" required
                         class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="number"
                         placeholder="Monthly payment">
-                    <input required id="edit-img"
-                        class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="url"
-                        placeholder="Img URL">
+                    <label for="edit-img" class="h-[40px] bg-blue-100 p-[10px] rounded-md text-gray-600 flex justify-between items-center cursor-pointer">
+                        <p>Choose another img</p>
+                        <i class="bx bx-image"></i>
+                    </label>
+                    <input required id="edit-img" class="hidden" type="file">
                     <input id="edit-category" required
                         class="h-[40px] bg-blue-100 p-[10px] rounded-md placeholder:text-gray-600" type="text"
                         placeholder="Category">
